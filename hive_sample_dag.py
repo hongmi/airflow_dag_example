@@ -77,8 +77,8 @@ SUPPORTED_HIVE_SCHEMA_SQL_IN_CLAUSE = "('{schemas}')".format(schemas="', '".join
 
 # Todo: user needs to modify and provide a hivemetastore connection string
 def connection_string():
-    connection = BaseHook.get_connection('mysql-foo')
-    return f'mysql+mysqldb://root:{connection.password}@mysql-foo:3306/metastore'
+    connection = BaseHook.get_connection('hive-metastore')
+    return f'mysql+mysqldb://hive:{connection.password}@172.31.0.100:3306/metastore'
 
 
 def create_table_wm_job(**kwargs):
