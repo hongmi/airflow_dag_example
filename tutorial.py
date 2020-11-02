@@ -7,13 +7,6 @@ from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 
-from airflow.hooks.base_hook import BaseHook
-
-connection = BaseHook.get_connection("mysql-foo")
-print('connection.password:', connection.password)
-print(connection)
-#password = connection.password # This is a getter that returns the unencrypted password.
-
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
 default_args = {
@@ -81,7 +74,7 @@ t3 = BashOperator(
     task_id='templated',
     depends_on_past=False,
     bash_command=templated_command,
-    params={'my_param': 'Parameter I passed in ' + connection.password},
+    params={'my_param': 'Parameter I passed in'},
     dag=dag,
 )
 
