@@ -7,7 +7,6 @@ import bson
 import datetime
 
 from airflow.operators.python_operator import PythonOperator
-from pymongo import MongoClient
 import pprint
 import copy
 from multiprocessing import Process, Value, Array
@@ -51,7 +50,6 @@ dag = DAG(
 
 
 
-mc = MongoClient('mongodb://mongodb-mongodb-replicaset-client/admin?readPreference=primary')
 
 def calc_dt_delta(dt1, dt2):
     return datetime.datetime.combine(dt1, datetime.time.min) - datetime.datetime.combine(dt2, datetime.time.min)
@@ -300,6 +298,9 @@ def task_func():
 #if __name__ == '__main__':
     print(sys.version)
     print(sys.path)
+    from pymongo import MongoClient
+
+    mc = MongoClient('mongodb://mongodb-mongodb-replicaset-client/admin?readPreference=primary')
 
     seeds = [o for o in mc['trans']['double11'].find()]
     pos = RandomPos(seeds)
