@@ -307,10 +307,10 @@ def task_func():
 
     now = datetime.datetime.now()
     dt = datetime.datetime.now()
-    while (now - dt).days < 2:
+    while (now - dt).days < 100:
         print(dt)
         log_timestamp('get orders')
-        orders = pos.get_orders(dt.date(), 1*1000)
+        orders = pos.get_orders(dt.date(), 1000*1000)
 
         log_timestamp('insert orders')
         mc['trans']['trans_1m_180day'].insert_many(orders)
