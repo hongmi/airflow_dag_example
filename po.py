@@ -60,7 +60,7 @@ def task_func():
 
 run_this = PythonOperator(
     task_id="python_operator_aa",
-    provide_context=True,
+    provide_context=False,
     python_callable=task_func,
     dag=dag
 )
