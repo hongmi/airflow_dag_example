@@ -64,5 +64,3 @@ run_this = PythonOperator(
     python_callable=task_func,
     dag=dag
 )
-
-run_this
