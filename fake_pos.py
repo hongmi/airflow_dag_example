@@ -300,7 +300,7 @@ def task_func():
     print(sys.path)
     from pymongo import MongoClient
 
-    mc = MongoClient('mongodb://mongodb-mongodb-replicaset-client/admin?readPreference=primary')
+    mc = MongoClient('mongodb://mongodb-mongodb-replicaset/admin?readPreference=primary')
 
     seeds = [o for o in mc['trans']['double11'].find()]
     pos = RandomPos(seeds)
