@@ -73,9 +73,7 @@ class RandomPos:
         :param num: order num to generate
         :return: order list
         '''
-        log_timestamp('seeding')
         orders = random.choices(self.seed_orders, k=num)
-        log_timestamp('seeding end')
 
         new_orders = []
         for oo in orders:
@@ -309,13 +307,14 @@ def task_func():
     dt = datetime.datetime.now()
     while (now - dt).days < 100:
         print(dt)
-        log_timestamp('get orders')
-        orders = pos.get_orders(dt.date(), 40*1000)
+        for i in range(10):
+            log_timestamp('get orders')
+            orders = pos.get_orders(dt.date(), 100*1000)
 
-        log_timestamp('insert orders')
-        mc['trans']['trans_1m_180day'].insert_many(orders)
+            log_timestamp('insert orders')
+            mc['trans']['trans_1m_180day'].insert_many(orders)
 
-        log_timestamp('insert completed')
+            log_timestamp('insert completed')
         dt -= datetime.timedelta(1)
 
 run_this = PythonOperator(
