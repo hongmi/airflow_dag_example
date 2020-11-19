@@ -46,7 +46,7 @@ dag = DAG(
     'python_operator',
     default_args=default_args,
     description='a python operator dag',
-    schedule_interval=datetime.timedelta(days=1),
+    schedule_interval=datetime.timedelta(days=8),
 )
 
 def log_timestamp(s):
