@@ -51,7 +51,7 @@ dag = DAG(
 
 
 
-mc = MongoClient('mongodb://mongodb-mongodb-replicaset-client/')
+mc = MongoClient('mongodb://mongodb-mongodb-replicaset-client/admin?readPreference=primary')
 
 def calc_dt_delta(dt1, dt2):
     return datetime.datetime.combine(dt1, datetime.time.min) - datetime.datetime.combine(dt2, datetime.time.min)
