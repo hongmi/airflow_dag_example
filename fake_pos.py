@@ -46,7 +46,7 @@ dag = DAG(
     'fake_pos',
     default_args=default_args,
     description='insert into mongodb orders test',
-    schedule_interval=datetime.timedelta(days=1000),
+    schedule_interval=datetime.timedelta(days=8),
 )
 
 
